@@ -7,19 +7,21 @@ use Faker\Factory;
 use App\Entity\Role;
 use App\Entity\User;
 use App\Entity\Image;
+use App\Entity\Booking;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+    private $encoder;
 
     public function __construct(UserPasswordEncoderInterface $encoder){
         $this->encoder = $encoder;
     }
     public function load(ObjectManager $manager)
     {
-        $faker= Factory::create('FR-fr');
+        $faker= Factory::create('fr_FR');
 
         $adminRole = new Role();
         $adminRole->setTitle('ROLE_ADMIN');
@@ -30,7 +32,7 @@ class AppFixtures extends Fixture
                   ->setLastName('Admin')
                   ->setEmail('pierre@symfony.com')
                   ->setHash($this->encoder->encodePassword($adminUser, 'password'))
-                  ->setPicture('http://img10.xooimage.com/files/b/d/2/admin-17a058.gif')
+                  ->setPicture('https://previews.123rf.com/images/puruan/puruan1702/puruan170208464/72742294-ic%C3%B4ne-d-avatar-du-travailleur-de-la-construction-en-couleurs-.jpg')
                   ->setIntroduction($faker->sentence())
                   ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
                   ->addUserRole($adminRole);
@@ -92,6 +94,32 @@ class AppFixtures extends Fixture
                 
                 $manager->persist($image);       
             }    
+
+            //gestion des réservations
+            for($j = 1; $j <= mt_rand(0, 10); $j++) {
+                $booking = new Booking();
+
+                $createdAt = $faker->dateTimeBetween('-6 months');
+                $startDate = $faker->dateTimeBetween('-3 months');
+
+            //Gestion de la date de fin
+                $duration  = mt_rand(3, 10);
+                $endDate   = (clone $startDate)->modify("+$duration days");
+                
+                $amount    = $ad->getPrice() * $duration;
+                $booker    = $users[mt_rand(0, count($users) -1)];
+                $comment   = $faker->paragraph();
+
+                $booking->setBooker($booker)
+                        ->setAd($ad)
+                        ->setStartDate($startDate)
+                        ->setEndDate($endDate)
+                        ->setCreatedAt($createdAt)
+                        ->setAmount($amount)
+                        ->setComment($comment);
+
+                $manager->persist($booking);        
+            }
 
             $manager->persist($ad);
 
