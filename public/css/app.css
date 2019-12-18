@@ -12,6 +12,13 @@ div.ad-title h1, div.ad-title p {
     color: white;
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
+
+div.ad-title .btn{
+    margin-top: 2em;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
 div.carousel-caption {
     text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
@@ -34,9 +41,40 @@ div.carousel-caption {
 
 .login {
     color: white ;
+    text-decoration: none;
 }
 
 .datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
     border-style: solid;
     border-color: red;
+}
+
+span.rating i {
+    color: goldenrod;
+}
+
+.alert a {
+    text-decoration: none;
+}
+
+.alert .btn{
+    color: white;
+}
+
+.confirm{
+    background-color: #4582EC ;
+}
+
+.btn.btn-inverted {
+    color: #4582EC;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.btn-center {
+    margin:auto;
+}
+
+.title {
+    color:#226be8;
 }
