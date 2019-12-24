@@ -1,4 +1,4 @@
-div.container {
+div.container, div.container-fluid {
     margin-top: 20px;
 }
 
@@ -42,6 +42,7 @@ div.carousel-caption {
 .login {
     color: white ;
     text-decoration: none;
+    text-align: justify;
 }
 
 .datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
