@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Connexion à l'administration</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    {#<link rel="stylesheet" href="/css/bootstrap.min.css">#}
+    {% block stylesheet %}
+    {{ encore_entry_link_tags('app') }}
+    {% endblock %}
     <script src="https://kit.fontawesome.com/29868a8e76.js" crossorigin="anonymous"></script>
     <style>
         body {

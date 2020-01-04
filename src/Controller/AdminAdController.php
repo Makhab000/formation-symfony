@@ -6,10 +6,11 @@ use App\Entity\Ad;
 use App\Form\AdType;
 use App\Repository\AdRepository;
 use App\Service\PaginationService;
-use Doctrine\Common\Persistence\ObjectManager;
+
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 
 class AdminAdController extends AbstractController
 {
@@ -34,7 +35,7 @@ class AdminAdController extends AbstractController
      * @param Ad $ad
      * @return Response
      */
-    public function edit(Ad $ad, Request $request, ObjectManager $manager){
+    public function edit(Ad $ad, Request $request, EntityManagerInterface $manager){
         $form = $this->createForm(AdType::class, $ad);
 
         $form->handleRequest($request);
@@ -62,11 +63,10 @@ class AdminAdController extends AbstractController
      * @Route("/admin/ads/{id}/delete", name="admin_ads_delete")
      * 
      * @param Ad $ad
-     * @param ObjectManager $manager
      * @return Response
      */
 
-    public function delete(Ad $ad, ObjectManager $manager) {
+    public function delete(Ad $ad, EntityManagerInterface $manager) {
         if(count($ad->getBookings()) > 0){
             $this->addFlash(
                 'warning',
