@@ -1,4 +1,6 @@
-var $ = require('jquery');
+//var $ = require('jquery');
+import $ from "jquery";
+
 
 global.$ = global.jQuery = $;
 
