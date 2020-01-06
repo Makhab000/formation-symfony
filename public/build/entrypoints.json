@@ -1,0 +1,40 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.5e3ab09c.js",
+        "/build/0.234192e3.js",
+        "/build/2.8795d438.js",
+        "/build/app.a9d6ef46.js"
+      ],
+      "css": [
+        "/build/app.b94837ed.css"
+      ]
+    },
+    "ad": {
+      "js": [
+        "/build/runtime.5e3ab09c.js",
+        "/build/0.234192e3.js",
+        "/build/1.a239fe68.js",
+        "/build/ad.606a6460.js"
+      ]
+    },
+    "book": {
+      "js": [
+        "/build/runtime.5e3ab09c.js",
+        "/build/book.a2d97745.js"
+      ],
+      "css": [
+        "/build/book.f2a63b90.css"
+      ]
+    },
+    "calendar": {
+      "js": [
+        "/build/runtime.5e3ab09c.js",
+        "/build/0.234192e3.js",
+        "/build/1.a239fe68.js",
+        "/build/calendar.6b3a4477.js"
+      ]
+    }
+  }
+}
